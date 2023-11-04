@@ -1,4 +1,4 @@
-const Size = 576;
+const SIZE = 576;
 const container = document.querySelector("#container");
 
 let isMouseDown = undefined;
@@ -7,7 +7,7 @@ flexElement(document.body, "column");
 addButton("Restart sketch");
 flexElement(container, "row");
 listenRestartButton();
-createGrid(32, Size);
+createGrid(32, SIZE);
 listenSquares();
 
 function flexElement(element, direction) {
@@ -16,15 +16,6 @@ function flexElement(element, direction) {
   element.style.flexDirection = direction;
   element.style.justifyContent = "center";
   element.style.alignItems = "center";
-}
-
-function addButton(text) {
-  const container = document.querySelector("#container");
-  const button = document.createElement("button");
-  button.textContent = text;
-  button.className = "btn";
-  button.style.margin = "1em"
-  document.body.insertBefore(button, container);
 }
 
 function createGrid(number, size) {
@@ -58,6 +49,15 @@ function restartGrid(number, size) {
   listenSquares();
 }
 
+function addButton(text) {
+  const container = document.querySelector("#container");
+  const button = document.createElement("button");
+  button.textContent = text;
+  button.className = "btn";
+  button.style.margin = "1em"
+  document.body.insertBefore(button, container);
+}
+
 function changeColor(element) {
   if (isMouseDown) {
     element.style.background = randomizeColor();
@@ -79,7 +79,7 @@ function listenRestartButton() {
 function isValidNumber() {
   let number = +prompt("How many squares per side?", "16");
   if (number <= 100 && number > 1) {
-    restartGrid(number, Size);
+    restartGrid(number, SIZE);
   } else {
     alert("Only from 2 to 100 accepted.");
     isValidNumber();
